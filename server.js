@@ -14,7 +14,9 @@ const sess = {
   }),
 };
 
-// const routes = require('./controllers);
+require("dotenv").config();
+
+const routes = require("./controllers");
 const exhbs = require("express-handlebars");
 const hbs = exhbs.create({});
 
@@ -33,7 +35,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(express.static(path.join(__dirname, "public")));
 
-// app.use(routes)
+app.use(routes);
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log(`listening on PORT ${PORT}`));
 });

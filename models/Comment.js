@@ -1,4 +1,4 @@
-const { INTEGER } = require("sequelize");
+// const { INTEGER } = require("sequelize");
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 
@@ -29,6 +29,7 @@ Comment.init(
   },
   {
     sequelize,
+    timestamps: true,
     freezeTableName: true,
     underscored: true,
     modelName: "Comment",
