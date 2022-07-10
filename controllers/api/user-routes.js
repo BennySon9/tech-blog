@@ -20,7 +20,7 @@ router.get("/", async (req, res) => {
 router.post("/", async (req, res) => {
   try {
     const newUser = await User.create(req.body);
-    res.json(newUser);
+    res.json({ message: "Successfully created new User!" });
   } catch (err) {
     res.status(500).json(err);
   }
@@ -30,7 +30,7 @@ router.post("/login", async (req, res) => {
   try {
     const foundUser = await User.findOne({
       where: {
-        email: req.body,
+        email: req.body.email,
       },
     });
 
@@ -52,7 +52,6 @@ router.post("/login", async (req, res) => {
       req.session.isLoggedIn = true;
 
       res.json({
-        user: foundUser,
         message: "You are now logged in.",
       });
     });

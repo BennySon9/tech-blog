@@ -13,6 +13,9 @@ Comment.init(
     user_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      validate: {
+        len: [1],
+      },
       references: {
         model: "User",
         key: "id",
