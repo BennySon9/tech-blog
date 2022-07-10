@@ -3,6 +3,7 @@ const sequelize = require("../../config/connection");
 
 const { User, Post, Comment } = require("../../models");
 
+// get all users
 router.get("/", async (req, res) => {
   try {
     const foundUsers = await User.findAll({
@@ -17,6 +18,7 @@ router.get("/", async (req, res) => {
   }
 });
 
+// create new user
 router.post("/", async (req, res) => {
   try {
     const newUser = await User.create(req.body);
@@ -26,6 +28,7 @@ router.post("/", async (req, res) => {
   }
 });
 
+// login as user
 router.post("/login", async (req, res) => {
   try {
     const foundUser = await User.findOne({
@@ -60,6 +63,7 @@ router.post("/login", async (req, res) => {
   }
 });
 
+// logout as user
 router.post("/logout", async (req, res) => {
   if (req.session.isLoggedIn) {
     req.session.destroy(() => {
@@ -70,6 +74,7 @@ router.post("/logout", async (req, res) => {
   }
 });
 
+// find user by id
 router.get("/:id", async (req, res) => {
   try {
     const foundUser = await User.findOne({
@@ -102,6 +107,7 @@ router.get("/:id", async (req, res) => {
   }
 });
 
+// update user withn their id
 router.put("/:id", async (req, res) => {
   try {
     const updatedUser = await User.update(req.body, {
@@ -122,6 +128,7 @@ router.put("/:id", async (req, res) => {
   }
 });
 
+// delete a user using their id
 router.delete("/:id", async (req, res) => {
   try {
     const deletedUser = await User.destroy({
