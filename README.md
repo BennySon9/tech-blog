@@ -18,6 +18,7 @@ Building a CMS-style blog site siimilar to Wordpress site, where developers can 
 ## Installation
 
 clone repo or use website
+https://github.com/BennySon9/tech-blog
 
 ## Usage
 
